@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  snarkos:
+    build: .
+    container_name: snarkos_node
+    volumes:
+      - ./data:/data # Mount the host directory to a generic /data directory
+    environment:
+      - VALIDATORS=${VALIDATORS}
+      - KEY_PATH=${KEY_PATH}
+    entrypoint: ["/entrypoint.sh"]
+    restart: always
